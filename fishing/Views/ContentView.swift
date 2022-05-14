@@ -37,6 +37,7 @@ struct ContentView: View {
                 game.score = game.points(slideValue: Int(slideValue.rounded()))
                 game.target = Int.random(in: 2...99)
                 alertIsVisible = true
+                game.highestScore = max(game.highestScore,game.score)
             }.alert(isPresented: $alertIsVisible) {
                 return Alert(title: Text("你好呀！"), message: Text("滑块的值是\(Int(slideValue.rounded()))。\n" + "你本轮获得了\(game.score)分"), dismissButton: .default(Text("真棒！")))
             }
